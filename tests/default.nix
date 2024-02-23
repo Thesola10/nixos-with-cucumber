@@ -22,6 +22,7 @@ let
     (import ./template.nix ({ inherit defaultConfig pkgs featureName; }//as));
 in
 { "basic" = behaveTest "basic.feature" {};
+  "basic2" = runTest' ./test-basic.nix {};
 }
 
 # Note: To run an individual unit test automatically (as part of the suite),

@@ -1,12 +1,7 @@
-{ pkgs, lib, ... }:
+{ pkgs, defaultConfig, ... }:
 { name = "test-basic";
-  machine =
-    { lib, ... }:
-    { # We base our test machine on our host config (otherwise what's the point?)
-      imports =
-      [ ../host.nix
-      ];
-    };
+  nodes.machine = defaultConfig;
+  hostPkgs = pkgs;
 
   testScript = ''
     start_all()
