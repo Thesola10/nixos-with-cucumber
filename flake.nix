@@ -7,7 +7,11 @@
     let host = "host";
         system = "x86_64-linux";
         modules =
-        [ ./configuration.nix
+        [ ./host.nix
+          ({ lib, ... }:
+            { options.inputs = lib.mkOption { type = lib.types.attrs; };
+              config.inputs = attrs;
+            })
         ];
 
         pkgs = import nixpkgs { inherit system; };
